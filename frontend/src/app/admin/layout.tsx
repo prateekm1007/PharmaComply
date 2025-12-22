@@ -1,17 +1,18 @@
-import { AdminNav } from "../../components/admin/AdminNav"
-import { TopNav } from "../../components/nav/TopNav"
-import { ProtectedRoute } from "../../components/auth/ProtectedRoute"
-import { ProtectedRoute } from "../../components/auth/ProtectedRoute"
-import { ReactNode } from "react"
+import React from "react";
+import { AdminNav } from "../../components/admin/AdminNav";
+import { ProtectedRoute } from "../../components/auth/ProtectedRoute";
 
-const AdminLayout = function AdminLayout({ children }: { children: ReactNode }) {
-  return (<div className="flex"><AdminNav/><div className="flex-1 p-6"><ProtectedRoute roles={["admin","super_admin"]}>
-    <html>
-      <body>
-      <TopNav />
-        {children}
-      </ProtectedRoute></body>
-    </html>
-  )
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <ProtectedRoute roles={["admin", "super_admin"]}>
+      <html>
+        <body>
+          <div className="flex min-h-screen">
+            <AdminNav />
+            <div className="flex-1 p-6">{children}</div>
+          </div>
+        </body>
+      </html>
+    </ProtectedRoute>
+  );
 }
-export default AdminLayout;
