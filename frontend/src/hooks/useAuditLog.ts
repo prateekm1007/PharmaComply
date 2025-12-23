@@ -1,14 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 
-export function useAuditLog(page = 1) {
+export async function fetchAuditLog() {
+  const res = await fetch("/api/admin/audit-log", {
+    credentials: "include",
+  });
+  if (!res.ok) throw new Error("Failed to fetch audit log");
+  return res.json();
+}
+
+export function useAuditLog() {
   return useQuery({
-    queryKey: ["auditLog", page],
-    queryFn: async () => {
-      const res = await fetch(`/api/admin/audit?page=${page}`, {
-        credentials: "include"
-      });
-      if (!res.ok) throw new Error("Failed audit log fetch");
-      return res.json();
-    }
+    queryKey: ["auditLog"],
+    queryFn: fetchAuditLog,
+    refetchInterval: 10000,
   });
 }
