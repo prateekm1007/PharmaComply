@@ -1,3 +1,4 @@
+import { useResetDetail } from "../../../../hooks/useResetDetail";
 "use client";
 
 import { ResetDetail } from "@/src/components/admin/ResetDetail";
