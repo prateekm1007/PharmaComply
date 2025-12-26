@@ -35,3 +35,11 @@ PharmaComply is a governance-first compliance system designed for regulated envi
 - Regulated SaaS companies
 - Internal compliance tooling teams
 - Health / Pharma infrastructure providers
+
+## Governed Health Systems Stack (Design + Enforcement)
+
+Includes:
+- Runtime governance enforcement
+- Read-only compliance monitoring
+- Multi-framework audit exports
+- AI-assisted governance review (advisory only)
